@@ -17,22 +17,6 @@ import (
 
 // Main function
 func main() {
-
-	// Sorting the given slice
-	s := []int{345, 78, 123, 10, 76, 2, 567, 5}
-
-	sort.Ints(s)
-	fmt.Println("Sorted slice: ", s)
-
-	// Finding the index
-	fmt.Println("Index value: ", strings.Index("GeeksforGeeks", "ks"))
-
-	// Finding the time
-	fmt.Println("Time: ", time.Now().Unix())
-
-	// index, smallest := findSmallest(data.LeftList)
-	// fmt.Printf("left list smallest index: %d and value %d ", index, smallest)
-
 	slices.Sort(data.LeftList)
 	slices.Sort(data.RightList)
 
