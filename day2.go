@@ -7,35 +7,38 @@ import (
 )
 
 func main() {
-	// slices.Sort(data.LeftList)
-	// slices.Sort(data.RightList)
-
-	var diffSum int
-	for i, _ := range data.LeftList {
-		difference := diff(data.LeftList[i], data.RightList[i])
-		// fmt.Println("diff is: ", difference)
-		diffSum += difference
+	matrix, err := data.ReadMatrix()
+	if err != nil {
+		fmt.Println("whoops:", err)
+		return
 	}
-	fmt.Println("diff sum is: ", diffSum)
-}
+	fmt.Println(matrix[0])
 
-func findSmallest(list []int) (int, int) {
-	smallest := list[0]
-	smallestIndex := 0
-
-	for i, num := range data.LeftList[1:] {
-		if num < smallest {
-			smallest = num
-			smallestIndex = i
+	safeLevels := 0
+	for _, row := range matrix {
+		isSafe := true
+		isPositive := row[0]-row[1] > 0
+		for i := 1; i < len(row); i++ {
+			diff := row[i-1] - row[i]
+			if diff > 0 != isPositive {
+				fmt.Println("direction is fugged")
+				isSafe = false
+				break
+			}
+			if diff < 0 {
+				diff = -diff
+			}
+			if diff < 1 || diff > 3 {
+				fmt.Println("diff fugged")
+				isSafe = false
+				break
+			}
+		}
+		if isSafe {
+			fmt.Println("WE SAFE")
+			safeLevels += 1
 		}
 	}
 
-	return smallestIndex, smallest
-}
-
-func diff(a, b int) int {
-	if a < b {
-		return b - a
-	}
-	return a - b
+	fmt.Println("safe levels:", safeLevels)
 }
