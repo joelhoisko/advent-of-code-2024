@@ -1,24 +1,14 @@
-// Go program to illustrate the
-// concept of main() function
-
-// Declaration of the main package
 package main
 
-// Importing packages
 import (
 	"fmt"
-	"slices"
-	"sort"
-	"strings"
-	"time"
 
 	"github.com/joelhoisko/advent-of-code-2024/data"
 )
 
-// Main function
 func main() {
-	slices.Sort(data.LeftList)
-	slices.Sort(data.RightList)
+	// slices.Sort(data.LeftList)
+	// slices.Sort(data.RightList)
 
 	var diffSum int
 	for i, _ := range data.LeftList {
