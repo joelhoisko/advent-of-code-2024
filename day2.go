@@ -12,7 +12,6 @@ func main() {
 		fmt.Println("whoops:", err)
 		return
 	}
-	fmt.Println(matrix[0])
 
 	safeLevels := 0
 	for _, row := range matrix {
